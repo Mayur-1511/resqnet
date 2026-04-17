@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResQNet – Offline Emergency Communication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       LANDING PAGE
+  ========================================================== -->
+  <section id="landing-page" class="landing active-page">
+    <div class="landing-bg">
+      <div class="grid-overlay"></div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-logo">
+        <div class="nav-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" fill="#00E5FF"/>
+            <circle cx="12" cy="12" r="7" stroke="#00E5FF" stroke-width="1.5" opacity="0.5"/>
+            <circle cx="12" cy="12" r="11" stroke="#00E5FF" stroke-width="1" opacity="0.25"/>
+          </svg>
+        </div>
+        <span class="nav-title">ResQNet</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features-section" class="nav-link">Features</a>
+        <a href="#how-it-works-section" class="nav-link">How It Works</a>
+        <a href="#about-section" class="nav-link">About</a>
+        <button class="nav-cta" onclick="openApp()">Launch App</button>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Offline Emergency Network · Active
+        </div>
+        <h1 class="hero-title">
+          Emergency Help<br />
+          <span class="hero-accent">Without the Internet</span>
+        </h1>
+        <p class="hero-desc">
+          ResQNet transforms every smartphone into a node of a decentralized rescue network. 
+          Bluetooth Mesh + WiFi Direct keep communities connected when infrastructure fails.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="openApp()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            Launch Demo App
+          </button>
+          <a href="https://github.com/" class="btn-secondary" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-num" data-target="12">0</span>
+            <span class="stat-lab">Devices Connected</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="stat-num" data-target="5">0</span>
+            <span class="stat-lab">Hop Range (km)</span>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <span class="stat-num" data-target="94">0</span><span class="stat-pct">%</span>
+            <span class="stat-lab">Response Rate</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="phone-mockup-wrap">
+          <div class="phone-glow"></div>
+          <div class="phone-mini" id="hero-phone">
+            <!-- Mini preview of app -->
+            <div class="pm-status">9:41</div>
+            <div class="pm-header">
+              <span class="pm-logo">ResQNet</span>
+              <span class="pm-badge-green">Connected</span>
+            </div>
+            <div class="pm-net">
+              <div class="pm-net-item"><span class="dot-blue"></span>Bluetooth Mesh · Active</div>
+              <div class="pm-net-item"><span class="dot-purple"></span>WiFi Direct · Active</div>
+              <div class="pm-net-item"><span class="dot-green"></span>12 Devices Connected</div>
+            </div>
+            <div class="pm-sos" onclick="openApp()">
+              <div class="pm-sos-ring">SOS</div>
+              <span class="pm-sos-sub">Tap to Send Alert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FEATURES SECTION
+  ========================================================== -->
+  <section id="features-section" class="features-section">
+    <div class="section-container">
+      <div class="section-label-tag">Core Features</div>
+      <h2 class="section-title">Built for When It Matters Most</h2>
+      <p class="section-sub">Every feature designed for zero-infrastructure emergency scenarios</p>
+
+      <div class="features-grid">
+        <div class="feature-card feature-card--accent">
+          <div class="fc-icon" style="background:#FF3B3B22;border-color:#FF3B3B44">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#FF3B3B" stroke-width="1.5" stroke-linejoin="round"/>
+              <line x1="12" y1="9" x2="12" y2="13" stroke="#FF3B3B" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="12" y1="17" x2="12.01" y2="17" stroke="#FF3B3B" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">One-Tap SOS</h3>
+          <p class="fc-desc">Single tap broadcasts your emergency across the entire mesh network instantly — no internet required.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="fc-icon" style="background:#00E5FF22;border-color:#00E5FF44">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">Mesh Networking</h3>
+          <p class="fc-desc">Bluetooth Low Energy + WiFi Direct create a self-healing mesh. Each device is a relay node.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="fc-icon" style="background:#7C5CFC22;border-color:#7C5CFC44">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">AI Prioritization</h3>
+          <p class="fc-desc">On-device AI scores and ranks emergencies by severity, proximity, and response capacity in real time.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="fc-icon" style="background:#00C98D22;border-color:#00C98D44">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#00C98D" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">Volunteer Mode</h3>
+          <p class="fc-desc">Community volunteers get notified of nearby emergencies and can accept response requests with one tap.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="fc-icon" style="background:#FF8C0022;border-color:#FF8C0044">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#FF8C00" stroke-width="1.5"/>
+              <circle cx="12" cy="10" r="3" stroke="#FF8C00" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">Location Sharing</h3>
+          <p class="fc-desc">GPS coordinates propagate through the mesh with each SOS hop, letting rescuers navigate accurately.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="fc-icon" style="background:#4A9EFF22;border-color:#4A9EFF44">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#4A9EFF" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="fc-title">Fully Offline</h3>
+          <p class="fc-desc">Zero dependency on cellular, internet, or any centralized infrastructure. Works during total blackouts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       HOW IT WORKS SECTION
+  ========================================================== -->
+  <section id="how-it-works-section" class="how-section">
+    <div class="section-container">
+      <div class="section-label-tag">Signal Flow</div>
+      <h2 class="section-title">How ResQNet Works</h2>
+      <p class="section-sub">From your finger to a volunteer in seconds — no towers, no internet</p>
+
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="fs-number">01</div>
+          <div class="fs-icon-wrap" style="background:#FF3B3B22;border-color:#FF3B3B33">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="5" y="2" width="14" height="20" rx="2" stroke="#FF3B3B" stroke-width="1.5"/>
+              <circle cx="12" cy="16" r="1" fill="#FF3B3B"/>
+            </svg>
+          </div>
+          <h4 class="fs-title">User Presses SOS</h4>
+          <p class="fs-desc">Victim taps the SOS button. Alert is generated with GPS coordinates, timestamp, and device ID.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-number">02</div>
+          <div class="fs-icon-wrap" style="background:#00E5FF22;border-color:#00E5FF33">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#00E5FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="fs-title">Broadcast via BLE/WiFi</h4>
+          <p class="fs-desc">Signal broadcasts over Bluetooth Mesh and WiFi Direct to all devices within range simultaneously.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-number">03</div>
+          <div class="fs-icon-wrap" style="background:#7C5CFC22;border-color:#7C5CFC33">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="#7C5CFC" stroke-width="1.5"/>
+              <polyline points="8 21 12 17 16 21" stroke="#7C5CFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="fs-title">Devices Forward Signal</h4>
+          <p class="fs-desc">Each receiving device re-broadcasts the alert, extending range hop-by-hop across the mesh network.</p>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-number">04</div>
+          <div class="fs-icon-wrap" style="background:#00C98D22;border-color:#00C98D33">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#00C98D" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h4 class="fs-title">Volunteer Responds</h4>
+          <p class="fs-desc">Nearest available volunteer receives alert with AI priority score and navigates to the victim's location.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ABOUT / TECH STACK SECTION
+  ========================================================== -->
+  <section id="about-section" class="about-section">
+    <div class="section-container">
+      <div class="section-label-tag">Tech Stack</div>
+      <h2 class="section-title">Built with Real Technology</h2>
+      <p class="section-sub">Production-ready components for the Android implementation</p>
+      <div class="tech-grid">
+        <div class="tech-pill"><span class="tp-dot" style="background:#3DDC84"></span>Android (Kotlin/Java)</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#00E5FF"></span>Bluetooth Low Energy</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#4A9EFF"></span>WiFi Direct (P2P)</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#FF9800"></span>Firebase (Cloud Relay)</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#7C5CFC"></span>AI Priority Engine</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#00C98D"></span>GPS Location Sharing</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#FF3B3B"></span>Offline-First Architecture</div>
+        <div class="tech-pill"><span class="tp-dot" style="background:#F472B6"></span>Mesh Propagation Protocol</div>
+      </div>
+
+      <div class="team-box">
+        <div class="tb-title">About This Project</div>
+        <p class="tb-desc">
+          ResQNet was designed to solve a critical gap in emergency response: when natural disasters, 
+          power outages, or infrastructure failures knock out cellular networks, people still need to 
+          call for help. By leveraging existing smartphone hardware (BLE + WiFi) to form a spontaneous 
+          mesh network, ResQNet ensures emergency communications never go dark.
+        </p>
+        <div class="tb-tags">
+          <span class="tb-tag">Hackathon Project</span>
+          <span class="tb-tag">Open Source</span>
+          <span class="tb-tag">Disaster Relief Tech</span>
+          <span class="tb-tag">Community Safety</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="nav-icon" style="width:28px;height:28px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="3" fill="#00E5FF"/>
+            <circle cx="12" cy="12" r="7" stroke="#00E5FF" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+        </div>
+        <span class="nav-title" style="font-size:18px">ResQNet</span>
+      </div>
+      <p class="footer-sub">Offline Emergency Communication · v1.2.0</p>
+      <p class="footer-copy">Built for hackathons & disaster relief · Open Source · MIT License</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       APP MODAL (Full Phone UI)
+  ========================================================== -->
+  <div id="app-modal" class="app-modal">
+    <div class="app-modal-bg" onclick="closeApp()"></div>
+    <div class="app-modal-inner">
+      <button class="app-close-btn" onclick="closeApp()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Close
+      </button>
+
+      <div class="phone" id="phone">
+        <!-- STATUS BAR -->
+        <div class="status-bar">
+          <span>9:41</span>
+          <span class="sb-icons">
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+              <rect x="0" y="3" width="2.5" height="7" fill="currentColor" opacity="0.4"/>
+              <rect x="3.5" y="2" width="2.5" height="8" fill="currentColor" opacity="0.6"/>
+              <rect x="7" y="0" width="2.5" height="10" fill="currentColor" opacity="0.8"/>
+              <rect x="10.5" y="0" width="2.5" height="10" fill="currentColor"/>
+            </svg>
+            <svg width="14" height="10" viewBox="0 0 22 14" fill="none">
+              <rect x="1" y="1" width="18" height="12" rx="3" stroke="currentColor" stroke-width="1.5" opacity="0.4"/>
+              <rect x="3" y="3" width="12" height="8" rx="1.5" fill="currentColor"/>
+              <path d="M20 4.5v5c1-.8 1-4.2 0-5z" fill="currentColor" opacity="0.5"/>
+            </svg>
+          </span>
+        </div>
+
+        <!-- HOME SCREEN -->
+        <div class="screen active" id="screen-home">
+          <div class="home-header">
+            <div class="app-logo">
+              <div class="app-logo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="3" fill="#00E5FF"/>
+                  <circle cx="12" cy="12" r="7" stroke="#00E5FF" stroke-width="1.5" opacity="0.5"/>
+                  <circle cx="12" cy="12" r="11" stroke="#00E5FF" stroke-width="1" opacity="0.25"/>
+                </svg>
+              </div>
+              <div>
+                <div class="app-title">ResQNet</div>
+                <div class="app-sub">Offline Emergency Communication</div>
+              </div>
+            </div>
+            <div class="info-btn">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="#8A9BBF" stroke-width="1.5"/>
+                <path d="M12 8v1M12 11v5" stroke="#8A9BBF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="net-card">
+            <div class="net-title-row">
+              <span class="net-title">Network Status</span>
+              <span class="badge-green">Connected</span>
+            </div>
+            <div class="net-item">
+              <div class="net-dot nd-blue">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#4A9EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="net-info">
+                <div class="net-name">Bluetooth Mesh</div>
+                <div class="net-status">Active</div>
+              </div>
+            </div>
+            <div class="net-item">
+              <div class="net-dot nd-purple">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#A47CFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="net-info">
+                <div class="net-name">WiFi Direct</div>
+                <div class="net-status">Active</div>
+              </div>
+            </div>
+            <div class="net-item">
+              <div class="net-dot nd-teal">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="9" cy="7" r="2" stroke="#00C98D" stroke-width="1.5"/>
+                  <circle cx="15" cy="7" r="2" stroke="#00C98D" stroke-width="1.5"/>
+                  <path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" stroke="#00C98D" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="net-info">
+                <div class="net-name">Nearby Devices</div>
+                <div class="net-status">12 connected</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sos-area">
+            <div class="sos-ring" id="sos-btn" onclick="triggerSOS()">
+              <div class="sos-text">SOS</div>
+              <div class="sos-sub">Tap to Send Emergency Alert</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOLUNTEER SCREEN -->
+        <div class="screen" id="screen-volunteer">
+          <div class="vol-header">
+            <div class="vol-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#00C98D" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="vol-title">Volunteer Mode</div>
+            <div class="vol-sub">Help others in emergency situations</div>
+          </div>
+
+          <div class="card">
+            <div class="toggle-row">
+              <div>
+                <div class="toggle-label">Volunteer Status</div>
+                <div class="toggle-sub" id="vol-status-text">Currently inactive</div>
+              </div>
+              <div class="toggle" id="vol-toggle" onclick="toggleVolunteer()"></div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon si-teal">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="9" cy="7" r="2" stroke="#00C98D" stroke-width="1.5"/>
+                  <circle cx="15" cy="7" r="2" stroke="#00C98D" stroke-width="1.5"/>
+                  <path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2" stroke="#00C98D" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="stat-label">People Helped</div>
+              <div class="stat-val">7</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon si-purple">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="#A47CFF" stroke-width="1.5"/>
+                  <path d="M12 6v6l4 2" stroke="#A47CFF" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="stat-label">Avg Response</div>
+              <div class="stat-val" style="font-size:18px">4 min</div>
+            </div>
+          </div>
+
+          <div class="card" style="flex:1;min-height:160px">
+            <div class="nearby-title">Nearby Emergencies</div>
+            <div class="nearby-item">
+              <div class="ni-dot" style="background:var(--red)"></div>
+              <div class="ni-info">
+                <div class="ni-name">Medical Emergency</div>
+                <div class="ni-dist">320m away · 2 min ago</div>
+              </div>
+              <span class="badge-red">High</span>
+            </div>
+            <div class="nearby-item">
+              <div class="ni-dot" style="background:var(--orange)"></div>
+              <div class="ni-info">
+                <div class="ni-name">Assistance Needed</div>
+                <div class="ni-dist">580m away · 5 min ago</div>
+              </div>
+              <span class="badge-orange">Med</span>
+            </div>
+            <div class="nearby-item">
+              <div class="ni-dot" style="background:var(--red)"></div>
+              <div class="ni-info">
+                <div class="ni-name">Lost Person</div>
+                <div class="ni-dist">1.1km away · 8 min ago</div>
+              </div>
+              <span class="badge-red">High</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EMERGENCIES SCREEN -->
+        <div class="screen" id="screen-emergencies">
+          <div class="emg-header">
+            <div>
+              <div class="emg-title">Active Emergencies</div>
+              <div class="emg-sub">AI-prioritized alerts nearby</div>
+            </div>
+            <span class="emg-count">3 Active</span>
+          </div>
+          <div style="flex:1;overflow-y:auto;padding-bottom:8px">
+            <div class="emg-card" onclick="showDetail('Medical Emergency','E7492','320m','2 min ago','3','High','red','Person collapsed near Sector 14 market. Requires immediate medical attention. CPR may be needed.')">
+              <div class="emg-top">
+                <div class="emg-type">
+                  <div class="emg-icon ei-red">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#FF3B3B" stroke-width="1.5" stroke-linejoin="round"/>
+                      <line x1="12" y1="9" x2="12" y2="13" stroke="#FF3B3B" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="12" y1="17" x2="12.01" y2="17" stroke="#FF3B3B" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="emg-name">Medical Emergency</div>
+                    <div class="emg-id">ID: #E7492</div>
+                  </div>
+                </div>
+                <div class="badges-col">
+                  <span class="badge-red">High</span>
+                  <span class="ai-badge">AI Top Priority</span>
+                </div>
+              </div>
+              <div class="emg-meta">
+                <div class="emg-meta-item">📍 320m</div>
+                <div class="emg-meta-item">🕐 2 min ago</div>
+                <div class="emg-meta-item">⚡ 3 hops</div>
+              </div>
+              <div class="emg-bottom">
+                <span class="vol-count">2 volunteers</span>
+                <button class="view-btn">View Details</button>
+              </div>
+            </div>
+
+            <div class="emg-card" onclick="showDetail('Assistance Needed','E7491','580m','5 min ago','4','Medium','orange','Elderly person needs help carrying supplies. Non-urgent but requires assistance soon.')">
+              <div class="emg-top">
+                <div class="emg-type">
+                  <div class="emg-icon ei-amber">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="#FF8C00" stroke-width="1.5" stroke-linejoin="round"/>
+                      <line x1="12" y1="9" x2="12" y2="13" stroke="#FF8C00" stroke-width="1.5" stroke-linecap="round"/>
+                      <line x1="12" y1="17" x2="12.01" y2="17" stroke="#FF8C00" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="emg-name">Assistance Needed</div>
+                    <div class="emg-id">ID: #E7491</div>
+                  </div>
+                </div>
+                <span class="badge-orange">Medium</span>
+              </div>
+              <div class="emg-meta">
+                <div class="emg-meta-item">📍 580m</div>
+                <div class="emg-meta-item">🕐 5 min ago</div>
+                <div class="emg-meta-item">⚡ 4 hops</div>
+              </div>
+              <div class="emg-bottom">
+                <span class="vol-count">1 volunteer</span>
+                <button class="view-btn">View Details</button>
+              </div>
+            </div>
+
+            <div class="emg-card" onclick="showDetail('Lost Person','E7490','1.1km','8 min ago','5','High','red','Child reported missing near the park entrance. Last seen wearing blue jacket. Family is searching.')">
+              <div class="emg-top">
+                <div class="emg-type">
+                  <div class="emg-icon ei-red">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="8" r="3" stroke="#FF3B3B" stroke-width="1.5"/>
+                      <path d="M6 21v-2a6 6 0 0 1 6-6h0a6 6 0 0 1 6 6v2" stroke="#FF3B3B" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="emg-name">Lost Person</div>
+                    <div class="emg-id">ID: #E7490</div>
+                  </div>
+                </div>
+                <span class="badge-red">High</span>
+              </div>
+              <div class="emg-meta">
+                <div class="emg-meta-item">📍 1.1km</div>
+                <div class="emg-meta-item">🕐 8 min ago</div>
+                <div class="emg-meta-item">⚡ 5 hops</div>
+              </div>
+              <div class="emg-bottom">
+                <span class="vol-count">4 volunteers</span>
+                <button class="view-btn">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS SCREEN -->
+        <div class="screen" id="screen-settings">
+          <div style="flex:1;overflow-y:auto;padding-bottom:8px">
+            <div class="settings-header">
+              <div class="settings-title">Settings</div>
+              <div class="settings-sub">Manage your ResQNet preferences</div>
+            </div>
+            <div class="profile-card">
+              <div class="profile-left">
+                <div class="avatar">JD</div>
+                <div>
+                  <div class="profile-name">John Doe</div>
+                  <div class="profile-role">Volunteer Member</div>
+                  <div class="profile-status"><div class="pdot"></div>Active</div>
+                </div>
+              </div>
+              <span style="color:var(--text3)">›</span>
+            </div>
+            <div class="section-label">Account</div>
+            <div class="menu-card">
+              <div class="menu-item">
+                <div class="menu-icon mi-blue">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#4A9EFF" stroke-width="1.5"/><path d="M6 21v-2a6 6 0 0 1 12 0v2" stroke="#4A9EFF" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="menu-text"><div class="menu-name">Profile Information</div><div class="menu-desc">Name, contact details</div></div>
+                <span class="menu-arrow">›</span>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon mi-purple">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" stroke="#A47CFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="menu-text"><div class="menu-name">Notifications</div><div class="menu-desc">Alert preferences</div></div>
+                <span class="menu-arrow">›</span>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon mi-teal">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#00C98D" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="menu-text"><div class="menu-name">Privacy & Security</div><div class="menu-desc">Data and permissions</div></div>
+                <span class="menu-arrow">›</span>
+              </div>
+            </div>
+            <div class="section-label">Network</div>
+            <div class="menu-card">
+              <div class="menu-item">
+                <div class="menu-icon mi-green">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#00C98D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="menu-text"><div class="menu-name">Mesh Network</div><div class="menu-desc">Bluetooth & WiFi Direct</div></div>
+                <span class="badge-green" style="margin-right:6px;font-size:10px">Connected</span>
+                <span class="menu-arrow">›</span>
+              </div>
+              <div class="menu-item">
+                <div class="menu-icon mi-blue">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01" stroke="#4A9EFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="menu-text"><div class="menu-name">Signal Strength</div><div class="menu-desc">Optimize propagation</div></div>
+                <span class="menu-arrow">›</span>
+              </div>
+            </div>
+            <div class="impact-card">
+              <div class="impact-title">YOUR IMPACT</div>
+              <div class="impact-stats">
+                <div class="impact-stat"><div class="impact-val" style="color:var(--accent)">7</div><div class="impact-lab">Helped</div></div>
+                <div class="impact-stat"><div class="impact-val" style="color:var(--purple)">24h</div><div class="impact-lab">Online</div></div>
+                <div class="impact-stat"><div class="impact-val" style="color:var(--green)">94%</div><div class="impact-lab">Rating</div></div>
+              </div>
+            </div>
+            <div class="signout-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="#FF3B3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Sign Out
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <div class="navbar">
+          <button class="nav-btn active" id="nav-home" onclick="switchTab('home')">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Home
+          </button>
+          <button class="nav-btn" id="nav-volunteer" onclick="switchTab('volunteer')">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            Volunteer
+          </button>
+          <button class="nav-btn" id="nav-emergencies" onclick="switchTab('emergencies')">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><line x1="12" y1="9" x2="12" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Emergencies
+          </button>
+          <button class="nav-btn" id="nav-settings" onclick="switchTab('settings')">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>
+            Settings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
